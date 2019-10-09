@@ -1,4 +1,33 @@
-#include <sys/types.h>
+/*
+
+VALGRIND OUTPUT:
+
+nmigeo@nmigeo-VirtualBox:~/github_clone$ valgrind --leak-check=full ./recursive_rename.out .
+==14231== Memcheck, a memory error detector
+==14231== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14231== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==14231== Command: ./recursive_rename.out .
+==14231==
+==14234==
+==14234== HEAP SUMMARY:
+==14234==     in use at exit: 0 bytes in 0 blocks
+==14234==   total heap usage: 46 allocs, 46 frees, 66,047 bytes allocated
+==14234==
+==14234== All heap blocks were freed -- no leaks are possible
+==14234==
+==14234== For counts of detected and suppressed errors, rerun with: -v
+==14234== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==14231==
+==14231== HEAP SUMMARY:
+==14231==     in use at exit: 0 bytes in 0 blocks
+==14231==   total heap usage: 87 allocs, 87 frees, 33,636 bytes allocated
+==14231==
+==14231== All heap blocks were freed -- no leaks are possible
+==14231==
+==14231== For counts of detected and suppressed errors, rerun with: -v
+==14231== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+*/
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -282,34 +311,3 @@ char *clearWhiteSpace(char *ret, int length, char *restOfFile)
   free(temp);
   return res;
 }
-
-/*
-
-VALGRIND OUTPUT:
-
-nmigeo@nmigeo-VirtualBox:~/github_clone$ valgrind --leak-check=full ./recursive_rename.out .
-==14231== Memcheck, a memory error detector
-==14231== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==14231== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==14231== Command: ./recursive_rename.out .
-==14231==
-==14234==
-==14234== HEAP SUMMARY:
-==14234==     in use at exit: 0 bytes in 0 blocks
-==14234==   total heap usage: 46 allocs, 46 frees, 66,047 bytes allocated
-==14234==
-==14234== All heap blocks were freed -- no leaks are possible
-==14234==
-==14234== For counts of detected and suppressed errors, rerun with: -v
-==14234== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==14231==
-==14231== HEAP SUMMARY:
-==14231==     in use at exit: 0 bytes in 0 blocks
-==14231==   total heap usage: 87 allocs, 87 frees, 33,636 bytes allocated
-==14231==
-==14231== All heap blocks were freed -- no leaks are possible
-==14231==
-==14231== For counts of detected and suppressed errors, rerun with: -v
-==14231== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-
-*/
